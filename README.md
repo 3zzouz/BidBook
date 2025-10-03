@@ -55,15 +55,13 @@ Enables real-time two-way messaging between users. Maintains persistent connecti
 Used for classic CRUD operations like book and blog creation/modification, ensuring a clean, synchronous request-response model.
 
 ---
-
 ## 👨‍💻 Project Contributors
 
- **Mohamed Aziz Dhouibi** \n
- **Oussema Guerami**      
- **Hiba Chabbouh**   
- **Leith Engazzou**   
- **Maher Wali**     
-
+**Mohamed Aziz Dhouibi**  
+**Oussema Guerami**  
+**Hiba Chabbouh**  
+**Leith Engazzou**  
+**Maher Wali**
 ---
 
 ## 🌍 Impact & Vision
