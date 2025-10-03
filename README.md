@@ -58,7 +58,7 @@ Used for classic CRUD operations like book and blog creation/modification, ensur
 
 ## 👨‍💻 Project Contributors
 
- **Mohamed Aziz Dhouibi**
+ **Mohamed Aziz Dhouibi** \n
  **Oussema Guerami**      
  **Hiba Chabbouh**   
  **Leith Engazzou**   
