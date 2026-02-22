@@ -10,12 +10,12 @@ import { UserRating } from 'src/user-rating/entities/user-rating.entity';
 
 @Entity()
 export class Book extends CommonEntity {
-  @Column()
+  @Column('varchar')
   title: string;
-  @Column()
+  @Column('varchar')
   author: string;
 
-  @Column()
+  @Column('varchar')
   editor: string;
 
   
@@ -26,29 +26,29 @@ export class Book extends CommonEntity {
   })
   category: Category;
 
-  @Column({ default: 0 })
+  @Column({ type: 'int', default: 0 })
   totalPages: number;
 
-  @Column({ default: 0 })
+  @Column({ type: 'int', default: 0 })
   damagedPages: number;
 
-  @Column({ default: 0 })
+  @Column({ type: 'int', default: 0 })
   age: number;
 
-  @Column({ default: 1 })
+  @Column({ type: 'int', default: 1 })
   edition: number;
 
   @Column({ type: 'float', default: 0 })
   price: number;
 
-  @Column()
+  @Column('varchar')
   picture: string;
  
   @OneToMany(() => UserRating, (rating) => rating.book)
   ratings: UserRating[];
 
   // New attribute for bidding status
-  @Column({ default: true })
+  @Column({ type: 'boolean', default: true })
   isBiddingOpen: boolean;
 
   @Column({
@@ -59,7 +59,7 @@ export class Book extends CommonEntity {
   language: Language;
 
   
-  @Column({ default: false })
+  @Column({ type: 'boolean', default: false })
   isSold: boolean;
   
 
@@ -79,7 +79,4 @@ export class Book extends CommonEntity {
   // Un livre peut recevoir plusieurs enchères
   @OneToMany(() => Bid, (bid) => bid.book, { cascade: true })
   bids: Bid[];
-
-  @Column({ default: false })
-  isSold: boolean;
 }

@@ -815,13 +815,14 @@ export class AuthService extends GenericService<User> {
       sub: user.id,
       email: user.email,
       isMfaAuthenticated: true,
+      
     };
 
-    const expiresIn = this.configService.get<string>('EXPIRES_IN') || '1h';
+    const expiresIn: string = this.configService.get<string>('EXPIRES_IN') || '1h';
     const expiryInSeconds = this.parseExpiryToSeconds(expiresIn);
 
     // Create the token
-    const token = this.jwtService.sign(payload, { expiresIn });
+    const token = this.jwtService.sign(payload, { expiresIn: expiresIn as any });
 
     // Store token in Redis for tracking and future invalidation
     await this.redisCacheService.storeUserToken(
@@ -829,6 +830,7 @@ export class AuthService extends GenericService<User> {
       'access',
       token,
       expiryInSeconds,
+
     );
 
     return token;
@@ -842,7 +844,7 @@ export class AuthService extends GenericService<User> {
       type: 'refresh',
     };
 
-    const expiresIn =
+    const expiresIn: string =
       this.configService.get<string>('REFRESH_EXPIRES_IN') || '30d';
     const expiryInSeconds = this.parseExpiryToSeconds(expiresIn);
 
@@ -851,7 +853,7 @@ export class AuthService extends GenericService<User> {
       secret:
         this.configService.get<string>('REFRESH_SECRET_KEY') ||
         this.configService.get<string>('SECRET_KEY'),
-      expiresIn,
+      expiresIn: expiresIn as any,
     });
 
     // Store refresh token in Redis

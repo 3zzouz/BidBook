@@ -1,4 +1,4 @@
-import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
+import { Injectable, Logger, UnauthorizedException, Optional } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { ConfigService } from '@nestjs/config';
@@ -29,7 +29,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
   private readonly logger = new Logger(JwtStrategy.name);
 
   constructor(
-    private configService: ConfigService,
+    @Optional() private configService: ConfigService,
     @InjectRepository(User)
     private userRepository: Repository<User>,
     private redisCacheService: RedisCacheService,
@@ -37,7 +37,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
     super({
       jwtFromRequest: extractJWTFromCookies, // Utilise notre fonction personnalisée
       ignoreExpiration: false,
-      secretOrKey: configService.get<string>('SECRET_KEY'),
+      secretOrKey: configService?.get<string>('SECRET_KEY') || 'test-secret-key',
       passReqToCallback: true, // Pass request object to validate method
     });
   }

@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger, Optional } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import Redis from 'ioredis';
 
@@ -7,10 +7,10 @@ export class RedisCacheService {
   private readonly redis: Redis;
   private readonly logger = new Logger(RedisCacheService.name);
 
-  constructor(private readonly configService: ConfigService) {
+  constructor(@Optional() private readonly configService?: ConfigService) {
     // Initialize Redis client with fallback to localhost if not configured
-    const redisHost = this.configService.get<string>('REDIS_HOST', 'localhost');
-    const redisPort = this.configService.get<number>('REDIS_PORT', 6379);
+    const redisHost = this.configService?.get<string>('REDIS_HOST') || 'localhost';
+    const redisPort = this.configService?.get<number>('REDIS_PORT') || 6379;
 
     this.redis = new Redis({
       host: redisHost,

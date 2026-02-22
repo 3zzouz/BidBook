@@ -12,16 +12,16 @@ import { CommonEntity } from 'src/Common/Common.entity';
   
 @Entity()
 export class Transaction extends CommonEntity {
-  @Column({nullable : true})
+  @Column({ nullable: true, type: 'varchar' })
   stripePaymentIntentId: string;
 
-  @Column({nullable : true})
+  @Column({ nullable: true, type: 'decimal' })
   amount: number;
 
-  @Column({nullable : true})
+  @Column({ nullable: true, type: 'varchar' })
   currency: string;
 
-  @Column({ default: 'pending' })
+  @Column({ type: 'varchar', default: 'pending' })
   status: 'pending' | 'succeeded' | 'failed';
 
   @ManyToOne(() => Bid, (bid) => bid.transactions, {

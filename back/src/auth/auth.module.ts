@@ -19,9 +19,9 @@ import { GithubStrategy } from './strategies/github.strategy';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
-        secret: configService.get<string>('SECRET_KEY'),
+        secret: configService.get<string>('SECRET_KEY') || 'default-secret-key',
         signOptions: {
-          expiresIn: configService.get<string>('EXPIRES_IN'),
+          expiresIn: (configService.get<string>('EXPIRES_IN') || '1h') as any,
         },
       }),
     }),
@@ -30,8 +30,8 @@ import { GithubStrategy } from './strategies/github.strategy';
   providers: [
     AuthService,
     JwtStrategy,
-    GoogleStrategy,
-    GithubStrategy,
+    //GoogleStrategy,
+    //GithubStrategy,
     MailService,
   ],
   exports: [JwtStrategy, PassportModule, AuthService],

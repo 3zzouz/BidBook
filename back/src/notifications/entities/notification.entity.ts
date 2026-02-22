@@ -7,7 +7,7 @@ export class Notification {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column('int')
   userId: number;
 
   @Column({
@@ -16,13 +16,13 @@ export class Notification {
   })
   type: NotificationType;
 
-  @Column()
+  @Column('text')
   message: string;
 
   @Column({ type: 'json', nullable: true })
   data: any;
 
-  @Column({ default: false })
+  @Column({ type: 'boolean', default: false })
   read: boolean;
 
   @CreateDateColumn()

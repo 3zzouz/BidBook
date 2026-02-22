@@ -11,28 +11,28 @@ import { Role } from '../../Enums/roles.enum';
 
 @Entity('_user')
 export class User extends CommonEntity {
-  @Column()
+  @Column('varchar')
   firstName: string;
 
-  @Column()
+  @Column('varchar')
   lastName: string;
 
-  @Column({ unique: true })
+  @Column({ unique: true, type: 'varchar' })
   email: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, type: 'varchar' })
   password: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, type: 'varchar' })
   imageUrl: string;
 
-  @Column({ default: false })
+  @Column({ type: 'boolean', default: false })
   isEmailVerified: boolean;
 
   @Column({ nullable: true, type: 'varchar' })
   verificationToken: string | null;
 
-  @Column({ default: false })
+  @Column({ type: 'boolean', default: false })
   isMFAEnabled: boolean;
   @OneToMany(() => Article, (article) => article.author)
   articles: Article[];
@@ -43,16 +43,16 @@ export class User extends CommonEntity {
   @Column('simple-array', { nullable: true })
   recoveryCodes: string[] | null;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, type: 'varchar' })
   googleId: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, type: 'varchar' })
   githubId: string;
 
   @Column({ type: 'enum', enum: Role, default: Role.USER })
   role: Role;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, type: 'varchar' })
   refreshToken?: string;
 
 

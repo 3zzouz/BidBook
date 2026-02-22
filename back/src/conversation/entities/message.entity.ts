@@ -4,16 +4,16 @@ import { Conversation } from './conversation.entity';
 
 @Entity()
 export class Message extends CommonEntity {
-  @Column()
+  @Column('text')
   content: string;
 
-  @Column()
+  @Column({ type: 'timestamp' })
   timestamp: Date;
 
-  @Column({ default: false })
+  @Column({ type: 'boolean', default: false })
   isRead: boolean;
 
-  @Column()
+  @Column('boolean')
   direction: boolean;
 
   @ManyToOne(() => Conversation, conversation => conversation.messages, { onDelete: 'CASCADE' })

@@ -52,18 +52,8 @@ import { NotificationSchedulerModule } from './notification-scheduler/notificati
 
 
 
-config({ path: `${process.cwd()}/Config/.env.dev` });
-
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      // Configuration de ConfigModule
-      isGlobal: true,
-      envFilePath: [
-        `${process.cwd()}/Config/.env`,
-        `${process.cwd()}/Config/.env.${process.env.NODE_ENV}`,
-      ],
-    }),
     ScheduleModule.forRoot(),
     TypeOrmModule.forRootAsync({
       // Configuration de TypeOrmModule

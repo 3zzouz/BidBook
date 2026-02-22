@@ -6,7 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   controllers: [StripeController],
-  providers: [StripeService],
+  providers: [],
   imports: [
     TypeOrmModule.forFeature([Transaction]),
   ],

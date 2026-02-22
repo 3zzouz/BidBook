@@ -5,10 +5,10 @@ import { Message } from 'src/conversation/entities/message.entity';
 
 @Entity()
 export class Conversation extends CommonEntity {
-  @Column({ default: true })
+  @Column({ type: 'boolean', default: true })
   isActive: boolean;
 
-  @Column()
+  @Column({ type: 'timestamp' })
   startDate: Date;
 
   @OneToOne(() => Bid)

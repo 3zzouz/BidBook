@@ -4,7 +4,7 @@ import { CommonEntity } from 'src/Common/Common.entity';
 import { Entity, Column, ManyToOne, JoinColumn } from 'typeorm';
 @Entity()
 export class Comment extends CommonEntity {
-  @Column()
+  @Column('text')
   content: string;
 
   @ManyToOne(() => User, (user) => user.comments, { onDelete: 'SET NULL' })

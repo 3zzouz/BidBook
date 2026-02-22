@@ -5,9 +5,9 @@ import { CategoryEnum } from '../enums/Category.enum';
 
 @Entity()
 export class Article extends CommonEntity {
-  @Column()
+  @Column('varchar')
   title: string;
-  @Column()
+  @Column('text')
   content: string;
   @Column({
     type: 'enum',
@@ -15,7 +15,7 @@ export class Article extends CommonEntity {
     default: CategoryEnum.DIVERS,
   })
   category: string;
-  @Column()
+  @Column('varchar')
   pictureUrl: string;
   @ManyToOne(() => User, (author) => author.articles, {
     onDelete: 'CASCADE',

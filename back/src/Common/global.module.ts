@@ -34,7 +34,6 @@ config({ path: `${process.cwd()}/Config/.env` });
       isGlobal: true,
       envFilePath: [
         `${process.cwd()}/Config/.env`,
-        `${process.cwd()}/Config/.env.${process.env.NODE_ENV}`,
       ],
     }),
     TypeOrmModule.forRootAsync({
