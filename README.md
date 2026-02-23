@@ -211,15 +211,6 @@ export default defineConfig({
 | `npm run test`          | Lance les tests en mode watch              |
 | `npm run test:coverage` | Lance les tests avec rapport de couverture |
 
-## 🎯 Objectifs de couverture
-
-Le projet vise à maintenir :
-
-- ✅ **> 90%** de couverture des instructions
-- ✅ **> 85%** de couverture des branches
-- ✅ **> 90%** de couverture des fonctions
-- ✅ **100%** de couverture pour les composants critiques
-
 ## 📚 Ressources
 
 - [Vitest Documentation](https://vitest.dev/)
